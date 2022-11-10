@@ -1,10 +1,20 @@
+Use a Rails API backend with a React frontend.
+
 - Created folder to hold project
+
 - Create Server/Client
     - rails new rails-phase-4-project --skip-javascript
+        -rails s
     - npx create-react-app client
+        - npm install --prefix client
+        - npm start --prefix client
+    - run both
+        - gem install foreman
+            - root/Procfile.dev
+              web: PORT=4000 npm start --prefix client
+              api: PORT=3000 rails s
+        - foreman start -f Procfile.dev
 
-
-Use a Rails API backend with a React frontend.
 Have at least three models on the backend, that include the following:
 At least two one-to-many relationships.
 At least one reciprocal many-to-many relationship (implemented by using 2 has-many-through relationships). Note: in order to accomplish this, your project must include a joins table. This joins table must include a user submittable attribute.
@@ -64,10 +74,9 @@ has_many :comments, through: :posts
 
 ---
 
-
-
 Full CRUD actions for at least one resource.
 Minimum of create and read actions for EACH resource.
+
 
     - Create:
         - post
