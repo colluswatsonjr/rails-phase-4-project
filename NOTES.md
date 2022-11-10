@@ -20,6 +20,8 @@ At least two one-to-many relationships.
 At least one reciprocal many-to-many relationship (implemented by using 2 has-many-through relationships). Note: in order to accomplish this, your project must include a joins table. This joins table must include a user submittable attribute.
 
 ---
+- Create post table
+    - rails g resource Post user_id:integer content:text likes:integer
 ## post
 
 has_many :comments
@@ -37,6 +39,8 @@ has_many :users, through: :comments
 :updated_at
 
 ---
+- Create comment table
+    - rails g resource Comment user_id:integer post_id:integer content:text
 ## comment
 
 belongs_to :user
@@ -54,6 +58,9 @@ belongs_to :post
 :updated_at
 
 ---
+- Create user table
+    - rails g resource User username first_name last_name email password_digest
+
 ## user
 
 has_many :posts
@@ -69,8 +76,6 @@ has_many :comments, through: :posts
 :email
 
 :password
-
-:date_of_birth
 
 ---
 
