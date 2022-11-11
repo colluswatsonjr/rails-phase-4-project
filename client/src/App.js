@@ -1,23 +1,49 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import WorldPage from './WorldPage';
 
 function App() {
+  const [users, setUsers] = useState(null)
+  const [posts, setPosts] = useState(null)
+  const [comments, setComments] = useState(null)
+
+  useEffect(()=> {
+    fetch("/users")
+    .then((r) => {
+      if (r.ok) {
+        r.json().then((users) => {
+          setUsers(users)
+          console.log('Got Users:', users)
+        });
+      }
+    });
+  }, []);
+  useEffect(()=> {
+    fetch("/posts")
+    .then((r) => {
+      if (r.ok) {
+        r.json().then((posts) => {
+          setPosts(posts)
+          console.log('Got Posts:', posts)
+        });
+      }
+    });
+  }, []);
+  useEffect(()=> {
+    fetch("/comments")
+    .then((r) => {
+      if (r.ok) {
+        r.json().then((comments) => {
+          setComments(comments)
+          console.log('Got Comments:', comments)
+        });
+      }
+    });
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <WorldPage />
     </div>
   );
 }
