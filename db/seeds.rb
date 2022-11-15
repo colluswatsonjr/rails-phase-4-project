@@ -5,9 +5,11 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-User.create(username: 'hearLouis', first_name: 'Louis', last_name: 'Garcia', email:'louis.garcia@aol.com', password_digest: '')
-User.create(username: 'seeTre', first_name: 'Tre', last_name: 'Garcia', email:'tre.watson@aol.com', password_digest: '')
-User.create(username: 'speakCollus', first_name: 'Collus', last_name: 'Collus', email:'collus.watson@aol.com', password_digest: '')
+puts "📃 Seeding data..."
+
+User.create(username: 'hearLouis', first_name: 'Louis', last_name: 'Garcia', email:'louis.garcia@aol.com', password_digest: 'asd')
+User.create(username: 'seeTre', first_name: 'Tre', last_name: 'Garcia', email:'tre.watson@aol.com', password_digest: 'asd')
+User.create(username: 'speakCollus', first_name: 'Collus', last_name: 'Collus', email:'collus.watson@aol.com', password_digest: 'asd')
 
 Post.create(user_id: 1, content: "I created this Monday", likes: 22 )
 Post.create(user_id: 1, content: "I created this Tuesday", likes: 24 )
@@ -22,3 +24,5 @@ Comment.create(user_id: 2, post_id: 3, content: "I also created this Thurday" )
 Comment.create(user_id: 2, post_id: 4, content: "I also created this Friday" )
 Comment.create(user_id: 3, post_id: 5, content: "I also created this Saturday" )
 Comment.create(user_id: 3, post_id: 6, content: "I also created this Sunday" )
+
+puts "✅ Done seeding"

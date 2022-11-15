@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import UserPage from './UserPage';
 import WorldPage from './WorldPage';
+import FriendPage from './FriendPage';
 
 function App() {
+  const [currUser, setCurrUser] = useState({id: 1, username: 'hearLouis', first_name: 'Louis', last_name: 'Garcia', email: 'louis.garcia@aol.com'})
   const [users, setUsers] = useState(null)
   const [posts, setPosts] = useState(null)
   const [comments, setComments] = useState(null)
@@ -13,7 +16,6 @@ function App() {
       if (r.ok) {
         r.json().then((users) => {
           setUsers(users)
-          console.log('Got Users:', users)
         });
       }
     });
@@ -24,7 +26,6 @@ function App() {
       if (r.ok) {
         r.json().then((posts) => {
           setPosts(posts)
-          console.log('Got Posts:', posts)
         });
       }
     });
@@ -35,7 +36,6 @@ function App() {
       if (r.ok) {
         r.json().then((comments) => {
           setComments(comments)
-          console.log('Got Comments:', comments)
         });
       }
     });
@@ -43,7 +43,9 @@ function App() {
 
   return (
     <div className="App">
-      <WorldPage />
+      {/* <UserPage currUser={currUser}/> */}
+      <WorldPage currUser={currUser} posts={posts} comments={comments}/>
+      {/* <FriendPage users={users} /> */}
     </div>
   );
 }
